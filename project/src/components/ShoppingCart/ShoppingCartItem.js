@@ -1,30 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import ShoppingCart from "./ShoppingCart";
-
-const ItemContainer = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  gap: 4px;
-  align-items: center;
-
-  p {
-    margin: 0;
-  }
-`;
+import { ItemContainer } from "./styled";
 
 const ShoppingCartItem = (props) => {
   return (
     <ItemContainer>
-      <p>{props.cartItem.quantity}x</p>
+      <p>{props.cartItem.quantity}X</p>
       <p>{props.cartItem.name}</p>
-      <button
-        onClick={() =>
-          props.onRemoveProductFromCart(props.cartItem.id)
-        }
-      >
+     <button onClick={() =>props.onRemoveProductFromCart(props.cartItem.id)}>
         Remover
-      </button>
+      </button> 
     </ItemContainer>
   )
 }

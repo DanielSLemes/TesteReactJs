@@ -1,16 +1,8 @@
-import React from "react";
-import  ShoppingCartItem  from "./ShoppingCartItem";
-import styled from "styled-components";
+import React, { useState } from "react";
+import ShoppingCartItem from "./ShoppingCartItem";
 
-const ShoppingCartContainer = styled.div`
-  border: 1px solid black;
-  padding: 8px;
-`;
-
-const CartListContainer = styled.div`
-  display: grid;
-  gap: 8px;
-`;
+import { CartListContainer, ShoppingCartContainer } from "./styled";
+import { useHistory } from "react-router-dom";
 
 const ShoppingCart = (props) => {
   const getTotalValue = () => {
@@ -23,6 +15,7 @@ const ShoppingCart = (props) => {
     return totalValue;
   };
 
+  const history = useHistory();
   return (
     <ShoppingCartContainer>
       <h3>Carrinho:</h3>
@@ -37,7 +30,14 @@ const ShoppingCart = (props) => {
         })}
       </CartListContainer>
       <p>Valor total: R${getTotalValue()},00</p>
+      {getTotalValue() === 0 ? (
+        "Carrinho Vazio"
+      ) : (
+        <button onClick={() => history.push("/cliente")}>
+          Finalizar Pedido
+        </button>
+      )}
     </ShoppingCartContainer>
   );
-}
-export default ShoppingCart ;
+};
+export default ShoppingCart;
