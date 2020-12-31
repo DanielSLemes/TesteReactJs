@@ -1,6 +1,6 @@
-import React from 'react'
-import { ShoppingCartItem } from './ShoppingCartItem'
-import styled from 'styled-components';
+import React from "react";
+import  ShoppingCartItem  from "./ShoppingCartItem";
+import styled from "styled-components";
 
 const ShoppingCartContainer = styled.div`
   border: 1px solid black;
@@ -10,31 +10,34 @@ const ShoppingCartContainer = styled.div`
 const CartListContainer = styled.div`
   display: grid;
   gap: 8px;
-`
+`;
 
-export class ShoppingCart extends React.Component {
-  getTotalValue = () => {
-    let totalValue = 0
+const ShoppingCart = (props) => {
+  const getTotalValue = () => {
+    let totalValue = 0;
 
-    for(let product of this.props.productsInCart) {
-      totalValue += product.price * product.quantity
+    for (let product of props.productsInCart) {
+      totalValue += product.price * product.quantity;
     }
 
-    return totalValue
-  }
+    return totalValue;
+  };
 
-  render() {
-    return <ShoppingCartContainer>
+  return (
+    <ShoppingCartContainer>
       <h3>Carrinho:</h3>
       <CartListContainer>
-        {this.props.productsInCart.map((product) => {
-          return <ShoppingCartItem 
-                    cartItem={product} 
-                    onRemoveProductFromCart={this.props.onRemoveProductFromCart}
-                  />
+        {props.productsInCart.map((product) => {
+          return (
+            <ShoppingCartItem
+              cartItem={product}
+              onRemoveProductFromCart={props.onRemoveProductFromCart}
+            />
+          );
         })}
       </CartListContainer>
-      <p>Valor total: R${this.getTotalValue()},00</p>
+      <p>Valor total: R${getTotalValue()},00</p>
     </ShoppingCartContainer>
-  }
-} 
+  );
+}
+export default ShoppingCart ;

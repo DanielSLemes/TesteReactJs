@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import ShoppingCart from "./ShoppingCart";
 
 const ItemContainer = styled.div`
   display: grid;
@@ -10,21 +11,21 @@ const ItemContainer = styled.div`
   p {
     margin: 0;
   }
-`
+`;
 
-
-export class ShoppingCartItem extends React.Component {
-  render() {
-    return <ItemContainer>
-      <p>{this.props.cartItem.quantity}x</p>
-      <p>{this.props.cartItem.name}</p>
-      <button 
-        onClick={() => this.props.onRemoveProductFromCart(this.props.cartItem.id)}
+const ShoppingCartItem = (props) => {
+  return (
+    <ItemContainer>
+      <p>{props.cartItem.quantity}x</p>
+      <p>{props.cartItem.name}</p>
+      <button
+        onClick={() =>
+          props.onRemoveProductFromCart(props.cartItem.id)
+        }
       >
         Remover
-      </button>   
-    
+      </button>
     </ItemContainer>
- 
-  }
+  )
 }
+export default ShoppingCartItem ;
