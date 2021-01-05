@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React  from "react";
 import ShoppingCartItem from "./ShoppingCartItem";
-
 import { CartListContainer, ShoppingCartContainer } from "./styled";
 import { useHistory } from "react-router-dom";
 
 const ShoppingCart = (props) => {
+
   const getTotalValue = () => {
     let totalValue = 0;
-
     for (let product of props.productsInCart) {
       totalValue += product.price * product.quantity;
     }
-
     return totalValue;
   };
 
@@ -33,10 +31,10 @@ const ShoppingCart = (props) => {
       {getTotalValue() === 0 ? (
         "Carrinho Vazio"
       ) : (
-        <button onClick={() => history.push("/cliente")}>
-          Finalizar Pedido
-        </button>
-      )}
+          <button onClick={() => history.push("/cliente")}>
+            Finalizar Pedido
+          </button>
+        )}
     </ShoppingCartContainer>
   );
 };

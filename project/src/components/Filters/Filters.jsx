@@ -1,36 +1,52 @@
+import { Input, TextField } from '@material-ui/core';
 import React from 'react'
 import { FiltersContainer, InputContainer } from './styled';
 
 const Filters = (props) => {
-    return (
-     <FiltersContainer>
+  return (
+    <FiltersContainer>
       <h3>Filtros</h3>
-        <InputContainer>
-          Valor mínimo:
-          <input
-            type="number"
-            value={props.minFilter}
-            onChange={props.onChangeMinFilter}
-          />
-        </InputContainer>
-        <InputContainer>
-          Valor máximo:
-          <input
-            type="number"
-            value={props.maxFilter}
-            onChange={props.onChangeMaxFilter}
-          />
-        </InputContainer>
-        <InputContainer>
-          Busca por nome:
-          <input
-            type="text"
-            value={props.nameFilter}
-            onChange={props.onChangeNameFilter}
-          />
-        </InputContainer>
+      <InputContainer>
+        <TextField
+          fullWidth="bool"
+          color="secondary"
+          variant={"outlined"}
+          label="Max"
+          value={props.minFilter}
+          type="number"
+
+          placeholder="Digite um valor minímo"
+          required
+          onChange={props.onChangeMinFilter}>
+        </TextField>
+      </InputContainer>
+      <InputContainer>
+        <TextField
+          fullWidth="bool"
+          color="secondary"
+          variant={"outlined"}
+          label="maxFilter"
+          value={props.maxFilter}
+          type="number"
+          placeholder="Digite um Valor máximo"
+          required
+          onChange={props.onChangeMaxFilter}>
+        </TextField>
+      </InputContainer>
+      <InputContainer>
+        <Input
+          fullWidth="bool"
+          color="secondary"
+          variant={"outlined"}
+          label="Max"
+          value={props.nameFilter}
+          type="text"
+          placeholder="Pesquise por um nome"
+          required
+          onChange={props.onChangeNameFilter}>
+        </Input>
+      </InputContainer>
     </FiltersContainer>
-    )
-  
-} 
-export default Filters ;
+  )
+}
+export default Filters;

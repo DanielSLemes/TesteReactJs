@@ -20,11 +20,9 @@ const Products = (props) => {
         sort === "CRESCENTE" ? a.price - b.price : b.price - a.price
       );
   };
-
   const onChangeSort = (event) => {
     setSort(event.target.value);
   };
-
   const filteredAndOrderedList = getFilteredAndOrderedList(props);
   return (
     <ProductsContainer>
