@@ -2,6 +2,7 @@ import React from "react";
 import { AddToCartButton, CardContainer, CardInfo } from "./styled";
 
 const ProductCard = (props) => {
+
   const product = props.product;
   return (
     <CardContainer>

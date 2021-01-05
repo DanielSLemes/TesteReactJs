@@ -1,13 +1,12 @@
-import { Button, Input, TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import { Button, TextField } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
 import { useForm } from "../../components/hooks/useForm";
 import { BackConfig, DivBack, Form, InputConfig } from "./styled";
-import Modal from "@material-ui/core/Modal";
 import { AnimationBack } from "../../Animation/AnimationBack";
 import { useHistory } from "react-router-dom";
 
 const Finish = () => {
-  
+
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
 
@@ -18,11 +17,16 @@ const Finish = () => {
     setCpf(event.target.value);
   };
 
+  useEffect(() => {
+    setNome(localStorage.getItem("Nome"))
+    setCpf(localStorage.getItem("CPF"))
+  }, [])
+
   const Finish = () => {
-      if(nome === "" && cpf === "") {
-        alert("preencha seu nome e Cpf");
-        return;
-      }
+    if (nome === "" && cpf === "") {
+      alert("preencha seu nome e Cpf");
+      return;
+    }
     if (nome === "") {
       alert("preencha seu nome");
       return;
@@ -33,6 +37,8 @@ const Finish = () => {
     }
     if (nome && cpf) {
       alert("Muito Obrigado");
+      localStorage.setItem("Nome", nome)
+      localStorage.setItem("CPF", cpf)
       setCpf("");
       setNome("");
       history.push("/");
@@ -49,7 +55,6 @@ const Finish = () => {
           </span>
         </BackConfig>
       </DivBack>
-
       <Form>
         <InputConfig>
           <TextField

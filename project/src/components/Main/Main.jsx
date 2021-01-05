@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import  Filters  from "../Filters/Filters";
-import  Products from "../Products/Products";
-import  ShoppingCart  from "../ShoppingCart/ShoppingCart";
+import React, { useState, useEffect } from "react";
+import Filters from "../Filters/Filters";
+import Products from "../Products/Products";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import Geladeira from "../Assets/Img/gel.png";
 import Fogao from "../Assets/Img/foga.png";
 import Armario from "../Assets/Img/armario.jpg";
@@ -13,7 +13,7 @@ import Cama from "../Assets/Img/cama.jpg";
 import Tv from "../Assets/Img/tv.jpg";
 import { AppContainer } from "./style";
 
- const products = [
+const products = [
   {
     id: 1,
     name:
@@ -75,28 +75,28 @@ import { AppContainer } from "./style";
   },
 ];
 
-const Main = (props) => {
+const Main = () => {
   const [minFilter, setMinFilter] = useState("");
   const [maxFilter, setMaxFilter] = useState("");
   const [nameFilter, setNameFilter] = useState("");
   const [productsInCart, setProductsInCart] = useState([]);
 
+
   const onChangeMinFilter = (event) => {
     setMinFilter(event.target.value);
   };
-
   const onChangeMaxFilter = (event) => {
     setMaxFilter(event.target.value);
   };
-
   const onChangeNameFilter = (event) => {
     setNameFilter(event.target.value);
   };
-
   const onAddProductToCart = (productId) => {
     const productInCart = productsInCart.find(
       (product) => productId === product.id
     );
+
+    localStorage.setItem("produto",JSON.stringify(productsInCart))
 
     if (productInCart) {
       const newProductsInCart = productsInCart.map((product) => {
@@ -106,10 +106,8 @@ const Main = (props) => {
             quantity: product.quantity + 1,
           };
         }
-
         return product;
       });
-
       setProductsInCart(newProductsInCart);
     } else {
       const productToAdd = products.find((product) => productId === product.id);
@@ -118,11 +116,9 @@ const Main = (props) => {
         ...productsInCart,
         { ...productToAdd, quantity: 1 },
       ];
-
       setProductsInCart(newProductsInCart);
     }
   };
-
   const onRemoveProductFromCart = (productId) => {
     const newProductsInCart = productsInCart
       .map((product) => {
@@ -137,7 +133,6 @@ const Main = (props) => {
       .filter((product) => product.quantity > 0);
     setProductsInCart(newProductsInCart);
   };
-
   return (
     <AppContainer>
       <Filters
@@ -158,9 +153,9 @@ const Main = (props) => {
       <ShoppingCart
         productsInCart={productsInCart}
         onRemoveProductFromCart={onRemoveProductFromCart}
+        onChangeNameFilter={onChangeNameFilter}
       />
     </AppContainer>
   );
 };
-
 export default Main;
