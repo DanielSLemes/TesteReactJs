@@ -4,6 +4,7 @@ export const goToMain = (history) => {
 export const goToFinish = (history) => {
     history.push("/cliente");
 }
+
 export const goBack = (history) => {
     history.goBack();
 }

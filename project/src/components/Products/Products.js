@@ -3,10 +3,11 @@ import ProductCard from "./ProductCard";
 import { ProductsContainer, ProductsGrid, ProductsHeader } from "./styled";
 
 const Products = (props) => {
+
   const [sort, setSort] = useState("DECRESCENTE");
 
   const getFilteredAndOrderedList = (props) => {
-    return props.products
+    return (props.products || [])
       .filter((product) =>
         props.maxFilter ? product.price < props.maxFilter : true
       )

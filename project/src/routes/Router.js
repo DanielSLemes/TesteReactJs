@@ -16,6 +16,7 @@ export default function Router() {
                     <Route exact path="/">
                         < Main/>
                     </Route>
+                  
                     <Route exact path="/cliente">
                       <Finish />
                     </Route>

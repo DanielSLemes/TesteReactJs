@@ -1,14 +1,22 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
-import { useForm } from "../../components/hooks/useForm";
 import { BackConfig, DivBack, Form, InputConfig } from "./styled";
 import { AnimationBack } from "../../Animation/AnimationBack";
 import { useHistory } from "react-router-dom";
+import FinishItem from "../FinishItem/FinishItem";
 
 const Finish = () => {
-
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
+  const [productsInCart, setProductsInCart] = useState([]);
+
+  useEffect(() => {
+    const products = localStorage.getItem("produtos")
+    const parseProducts = JSON.parse(products)
+    if (parseProducts) {
+      setProductsInCart(parseProducts)
+    }
+  }, [])
 
   const onChangeNome = (event) => {
     setNome(event.target.value);
@@ -44,7 +52,13 @@ const Finish = () => {
       history.push("/");
     }
   };
-
+  const getTotalValue = () => {
+    let totalValue = 0;
+    for (let product of productsInCart) {
+      totalValue += product.price * product.quantity;
+    }
+    return totalValue;
+  };
   const history = useHistory();
   return (
     <div>
@@ -55,6 +69,15 @@ const Finish = () => {
           </span>
         </BackConfig>
       </DivBack>
+
+      {productsInCart.map((product) => {
+        return (
+          <FinishItem
+            cartItem={product}
+          />
+        );
+      })}
+      <p>Valor total: R${getTotalValue()},00</p>
       <Form>
         <InputConfig>
           <TextField
