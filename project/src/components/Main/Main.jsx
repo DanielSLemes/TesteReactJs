@@ -12,6 +12,7 @@ import GuardaRoupas from "../Assets/Img/guardaRoupas.png";
 import Cama from "../Assets/Img/cama.jpg";
 import Tv from "../Assets/Img/tv.jpg";
 import { AppContainer } from "./style";
+import { goToFinish } from "../../routes/Cordinator";
 
 const products = [
   {
@@ -79,9 +80,17 @@ const Main = () => {
   const [minFilter, setMinFilter] = useState("");
   const [maxFilter, setMaxFilter] = useState("");
   const [nameFilter, setNameFilter] = useState("");
-  const [productsInCart, setProductsInCart] = useState([]);
-
-
+  const [productsInCart, setProductsInCart] = useState([])
+  useEffect(() => {
+    const products = localStorage.getItem("produtos")
+    const parseProducts = JSON.parse(products)
+    if (parseProducts) {
+      setProductsInCart(parseProducts)
+    }
+  }, [])
+  useEffect(() => {
+    localStorage.setItem("produtos", JSON.stringify(productsInCart))
+  }, [productsInCart])
   const onChangeMinFilter = (event) => {
     setMinFilter(event.target.value);
   };
@@ -95,9 +104,6 @@ const Main = () => {
     const productInCart = productsInCart.find(
       (product) => productId === product.id
     );
-
-    localStorage.setItem("produto",JSON.stringify(productsInCart))
-
     if (productInCart) {
       const newProductsInCart = productsInCart.map((product) => {
         if (productId === product.id) {
@@ -155,6 +161,8 @@ const Main = () => {
         onRemoveProductFromCart={onRemoveProductFromCart}
         onChangeNameFilter={onChangeNameFilter}
       />
+      <button onClick={() => goToFinish()}>teste</button>
+
     </AppContainer>
   );
 };
