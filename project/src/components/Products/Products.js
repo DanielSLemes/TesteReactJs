@@ -3,10 +3,11 @@ import ProductCard from "./ProductCard";
 import { ProductsContainer, ProductsGrid, ProductsHeader } from "./styled";
 
 const Products = (props) => {
+
   const [sort, setSort] = useState("DECRESCENTE");
 
   const getFilteredAndOrderedList = (props) => {
-    return props.products
+    return (props.products || [])
       .filter((product) =>
         props.maxFilter ? product.price < props.maxFilter : true
       )
@@ -20,11 +21,9 @@ const Products = (props) => {
         sort === "CRESCENTE" ? a.price - b.price : b.price - a.price
       );
   };
-
   const onChangeSort = (event) => {
     setSort(event.target.value);
   };
-
   const filteredAndOrderedList = getFilteredAndOrderedList(props);
   return (
     <ProductsContainer>
@@ -44,6 +43,7 @@ const Products = (props) => {
             <ProductCard
               product={product}
               onAddProductToCart={props.onAddProductToCart}
+              onRemoveProductFromCart={props.onRemoveProductFromCart}
             />
           );
         })}
