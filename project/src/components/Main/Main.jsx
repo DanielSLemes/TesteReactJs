@@ -13,6 +13,9 @@ import Cama from "../Assets/Img/cama.jpg";
 import Tv from "../Assets/Img/tv.jpg";
 import { AppContainer } from "./style";
 
+import { goToFinish } from "../../routes/Cordinator";
+
+
 const products = [
   {
     id: 1,
@@ -154,14 +157,13 @@ const Main = () => {
         maxFilter={maxFilter}
         nameFilter={nameFilter}
         onAddProductToCart={onAddProductToCart}
-        onRemoveProductFromCart={onRemoveProductFromCart}
-        productsInCart={productsInCart}
       />
       <ShoppingCart
         productsInCart={productsInCart}
         onRemoveProductFromCart={onRemoveProductFromCart}
         onChangeNameFilter={onChangeNameFilter}
       />
+
     </AppContainer>
   );
 };

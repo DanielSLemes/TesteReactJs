@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import React from "react";
 import { AddToCartButton, CardContainer, CardInfo } from "./styled";
 
+
 const ProductCard = ({ ShowAddButton = true, product, ...props }) => {
   return (
     <CardContainer>
@@ -12,7 +13,6 @@ const ProductCard = ({ ShowAddButton = true, product, ...props }) => {
         {ShowAddButton && <Button variant="contained" color="primary" onClick={() => props.onAddProductToCart(product.id)}>
           Adicionar ao carrinho
         </Button>}
-
       </CardInfo>
       {ShowAddButton ? false : <AddToCartButton onClick={() => props.onRemoveProductFromCart(product.id)}>
         Remover do carrinho

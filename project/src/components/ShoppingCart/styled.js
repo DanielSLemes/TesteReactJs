@@ -13,15 +13,18 @@ export const InputContainer = styled.label`
 export const ShoppingCartContainer = styled.div`
   border: 1px solid black;
   padding: 8px;
+
   strong {
     color:red;
   }
 `;
+
 export const CartListContainer = styled.div`
   display: grid;
   gap: 8px;
 `;
 export const ItemContainer = styled.div`
+
   display:flex;
   flex-direction:column;
   p {

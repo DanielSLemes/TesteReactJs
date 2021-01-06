@@ -5,6 +5,7 @@ import { ItemContainer } from "./styled";
 const ShoppingCartItem = (props) => {
   return (
     <ItemContainer>
+
       <h3>{props.cartItem.quantity}{props.cartItem.quantity === 1 ? <strong > Item </strong> : <strong> Itens </strong>}</h3>
       <p>{props.cartItem.name}</p>
       <div>

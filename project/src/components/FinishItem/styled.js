@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const ItemContainer = styled.div`
   display: flex;
   flex-wrap:wrap;
@@ -19,4 +20,3 @@ display:flex;
 justify-content:center;
 margin-bottom:1vh;
   
-`;

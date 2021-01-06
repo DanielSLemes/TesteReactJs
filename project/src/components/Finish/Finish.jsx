@@ -1,11 +1,10 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
+
 import { BackConfig, DivBack, Form, InputConfig, DivMap } from "./styled";
 import { AnimationBack } from "../../Animation/AnimationBack";
 import { useHistory } from "react-router-dom";
 import FinishItem from "../FinishItem/FinishItem";
-
-
 const Finish = () => {
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -61,6 +60,7 @@ const Finish = () => {
     return totalValue;
   };
 
+
   const onRemoveProductFromCart = (productId) => {
     const newProductsInCart = productsInCart
       .map((product) => {
@@ -75,6 +75,8 @@ const Finish = () => {
       .filter((product) => product.quantity > 0);
     setProductsInCart(newProductsInCart);
   };
+
+
   const history = useHistory();
   return (
     <div>
@@ -85,6 +87,7 @@ const Finish = () => {
           </span>
         </BackConfig>
       </DivBack>
+
       <DivMap>
         {productsInCart.map((product) => {
           return (
@@ -95,7 +98,6 @@ const Finish = () => {
           );
         })}
       </DivMap>
-
       <p>Valor total: R${getTotalValue()},00</p>
       <Form>
         <InputConfig>
