@@ -1,17 +1,22 @@
+
+import { Button } from "@material-ui/core";
 import React from "react";
-import ProductCard from "../Products/ProductCard";
-import { ItemContainer } from "./styled";
+import { ItemContainer, DivButtom } from "./styled";
 
 const FinishItem = (props) => {
-  return (
-    <ItemContainer>
-        <ProductCard 
-        product={props.cartItem} width="20px"
-        ShowAddButton= {false} 
-        />
-      <p>{props.cartItem.quantity}X</p>
-      {/* <p>{props.cartItem.name}</p> */}
-    </ItemContainer>
-  )
+    return (
+        <ItemContainer>
+            <img src={props.cartItem.photo} width="50%" height="30%" />
+            <p>{props.cartItem.quantity} {props.cartItem.quantity === 1 ? <strong>Item</strong> : <strong>Itens</strong>}</p>
+            <p>{props.cartItem.name}</p>
+            <DivButtom>
+                <Button variant="contained" color="secondary" onClick={() => props.onRemoveProductFromCart(props.cartItem.id)}>
+                    Remover
+      </Button>
+            </DivButtom>
+        </ItemContainer>
+    )
 }
-export default FinishItem ;
+export default FinishItem;
+
+

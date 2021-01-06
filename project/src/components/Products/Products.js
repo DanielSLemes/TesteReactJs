@@ -43,6 +43,7 @@ const Products = (props) => {
             <ProductCard
               product={product}
               onAddProductToCart={props.onAddProductToCart}
+              onRemoveProductFromCart={props.onRemoveProductFromCart}
             />
           );
         })}

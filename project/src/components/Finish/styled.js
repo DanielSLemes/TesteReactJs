@@ -3,9 +3,6 @@ import styled from 'styled-components';
 export const Form= styled.form`
 display:flex;
 flex-direction:column;
-
-align-items:center;
-
 `
 export const InputConfig = styled.div`
 display:flex;
@@ -14,9 +11,7 @@ width:90%;
 font-size:30px;
 margin:2vh 0 2vh 0;
 background-color: white;
-
 `
-
 export const BackConfig = styled.p`
 display:flex;
 justify-content:flex-start;
@@ -32,14 +27,11 @@ margin:0;
 background-color:gray;
 `
 
-
-
-
-
-
-
-
-
+export const DivMap= styled.div` 
+display:flex;
+flex-wrap:wrap;
+justify-content:space-around;
+`
 export const CardContainer = styled.div`
   border: 1px solid black;
   display: flex;
@@ -86,4 +78,5 @@ export const ProductsGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 16px;
+
 `

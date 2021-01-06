@@ -4,24 +4,24 @@ import Finish from "../components/Finish/Finish";
 import Main from "../components/Main/Main";
 
 
-
-
 export default function Router() {
-
-
- return (
+    return (
+export default function Router() {
         <div>
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
-                        < Main/>
+
+                        < Main />
                     </Route>
-                  
+
                     <Route exact path="/cliente">
-                      <Finish />
+                        <Finish />
                     </Route>
                 </Switch>
             </BrowserRouter>
         </div>
     );
- }
+
+}
+

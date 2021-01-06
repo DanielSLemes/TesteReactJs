@@ -12,14 +12,16 @@ import GuardaRoupas from "../Assets/Img/guardaRoupas.png";
 import Cama from "../Assets/Img/cama.jpg";
 import Tv from "../Assets/Img/tv.jpg";
 import { AppContainer } from "./style";
+
 import { goToFinish } from "../../routes/Cordinator";
+
 
 const products = [
   {
     id: 1,
     name:
       "Geladeira / Refrigerador Brastemp, Duplex, Frost Free, Turbo Ice, 462L, Evox - BRM56AK",
-    price: 1000,
+    price: 1.000,
     photo: Geladeira,
   },
   {
@@ -38,7 +40,7 @@ const products = [
   {
     id: 4,
     name: "Pia de Cozinha em Granito Preto Absoluto",
-    price: 1600,
+    price: 1.600,
     photo: PiaCozinha,
   },
   {
@@ -161,7 +163,6 @@ const Main = () => {
         onRemoveProductFromCart={onRemoveProductFromCart}
         onChangeNameFilter={onChangeNameFilter}
       />
-      <button onClick={() => goToFinish()}>teste</button>
 
     </AppContainer>
   );
