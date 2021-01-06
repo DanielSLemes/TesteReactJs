@@ -1,10 +1,10 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
-
 import { BackConfig, DivBack, Form, InputConfig, DivMap } from "./styled";
 import { AnimationBack } from "../../Animation/AnimationBack";
 import { useHistory } from "react-router-dom";
 import FinishItem from "../FinishItem/FinishItem";
+
 const Finish = () => {
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -29,29 +29,6 @@ const Finish = () => {
     setNome(localStorage.getItem("Nome"))
     setCpf(localStorage.getItem("CPF"))
   }, [])
-
-  const Finish = () => {
-    if (nome === "" && cpf === "") {
-      alert("preencha seu nome e Cpf");
-      return;
-    }
-    if (nome === "") {
-      alert("preencha seu nome");
-      return;
-    }
-    if (cpf === "") {
-      alert("preencha seu cpf");
-      return;
-    }
-    if (nome && cpf) {
-      alert("Muito Obrigado");
-      localStorage.setItem("Nome", nome)
-      localStorage.setItem("CPF", cpf)
-      setCpf("");
-      setNome("");
-      history.push("/");
-    }
-  };
   const getTotalValue = () => {
     let totalValue = 0;
     for (let product of productsInCart) {
@@ -59,7 +36,6 @@ const Finish = () => {
     }
     return totalValue;
   };
-
 
   const onRemoveProductFromCart = (productId) => {
     const newProductsInCart = productsInCart
@@ -75,8 +51,6 @@ const Finish = () => {
       .filter((product) => product.quantity > 0);
     setProductsInCart(newProductsInCart);
   };
-
-
   const history = useHistory();
   return (
     <div>
@@ -87,7 +61,6 @@ const Finish = () => {
           </span>
         </BackConfig>
       </DivBack>
-
       <DivMap>
         {productsInCart.map((product) => {
           return (

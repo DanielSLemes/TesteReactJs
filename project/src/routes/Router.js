@@ -6,7 +6,6 @@ import Main from "../components/Main/Main";
 
 export default function Router() {
     return (
-export default function Router() {
         <div>
             <BrowserRouter>
                 <Switch>
