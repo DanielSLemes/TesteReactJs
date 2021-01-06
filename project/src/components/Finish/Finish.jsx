@@ -29,29 +29,6 @@ const Finish = () => {
     setNome(localStorage.getItem("Nome"))
     setCpf(localStorage.getItem("CPF"))
   }, [])
-
-  const Finish = () => {
-    if (nome === "" && cpf === "") {
-      alert("preencha seu nome e Cpf");
-      return;
-    }
-    if (nome === "") {
-      alert("preencha seu nome");
-      return;
-    }
-    if (cpf === "") {
-      alert("preencha seu cpf");
-      return;
-    }
-    if (nome && cpf) {
-      alert("Muito Obrigado");
-      localStorage.setItem("Nome", nome)
-      localStorage.setItem("CPF", cpf)
-      setCpf("");
-      setNome("");
-      history.push("/");
-    }
-  };
   const getTotalValue = () => {
     let totalValue = 0;
     for (let product of productsInCart) {
@@ -74,7 +51,6 @@ const Finish = () => {
       .filter((product) => product.quantity > 0);
     setProductsInCart(newProductsInCart);
   };
-
   const history = useHistory();
   return (
     <div>
