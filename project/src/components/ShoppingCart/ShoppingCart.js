@@ -1,31 +1,22 @@
 import React from "react";
-import  ShoppingCartItem  from "./ShoppingCartItem";
-import styled from "styled-components";
-
-const ShoppingCartContainer = styled.div`
-  border: 1px solid black;
-  padding: 8px;
-`;
-
-const CartListContainer = styled.div`
-  display: grid;
-  gap: 8px;
-`;
+import ShoppingCartItem from "./ShoppingCartItem";
+import { CartListContainer, ShoppingCartContainer } from "./styled";
+import { useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const ShoppingCart = (props) => {
+
   const getTotalValue = () => {
     let totalValue = 0;
-
     for (let product of props.productsInCart) {
       totalValue += product.price * product.quantity;
     }
-
     return totalValue;
   };
 
+  const history = useHistory();
   return (
     <ShoppingCartContainer>
-      <h3>Carrinho:</h3>
       <CartListContainer>
         {props.productsInCart.map((product) => {
           return (
@@ -36,8 +27,15 @@ const ShoppingCart = (props) => {
           );
         })}
       </CartListContainer>
-      <p>Valor total: R${getTotalValue()},00</p>
+      <h4>Valor total: < strong ><em >R${getTotalValue()},00</em></strong> </h4>
+      {getTotalValue() === 0 ? (
+        "Carrinho Vazio"
+      ) : (
+          <Button variant="contained" color="primary" onClick={() => history.push("/cliente")}>
+            Finalizar Pedido
+          </Button>
+        )}
     </ShoppingCartContainer>
   );
-}
-export default ShoppingCart ;
+};
+export default ShoppingCart;
